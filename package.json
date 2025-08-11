@@ -1,0 +1,29 @@
+{
+  "name": "bfxr2-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Bfxr2 v1.0.4 music generation using existing codebase",
+  "main": "src/server.js",
+  "bin": {
+    "bfxr2-mcp-server": "src/server.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --inspect src/server.js",
+    "build": "npm install",
+    "test": "node test-server.js",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "bfxr2": "git+https://github.com/avi892nash/bfxr2.git"
+  },
+  "keywords": ["mcp", "music", "sound", "bfxr"],
+  "author": "Bfxr2 MCP",
+  "license": "MIT",
+  "files": [
+    "src/",
+    "README.md"
+  ]
+}
