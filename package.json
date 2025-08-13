@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.4.0",
-    "bfxr2": "git+https://github.com/avi892nash/bfxr2.git"
+    "bfxr2": "git+https://github.com/increpare/bfxr2.git"
   },
   "keywords": ["mcp", "music", "sound", "bfxr"],
   "author": "Bfxr2 MCP",
