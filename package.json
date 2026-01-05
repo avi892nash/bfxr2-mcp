@@ -1,29 +1,56 @@
 {
   "name": "bfxr2-mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for Bfxr2 v1.0.4 music generation using existing codebase",
-  "main": "src/server.js",
+  "description": "MCP server for Bfxr2 v1.0.4 music and sound effect generation using existing codebase",
+  "main": "dist/index.js",
   "bin": {
-    "bfxr2-mcp-server": "src/server.js"
+    "bfxr2-mcp-server": "dist/index.js"
   },
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --inspect src/server.js",
-    "build": "npm install",
+    "build": "esbuild src/server.js --bundle --platform=node --target=node18 --format=esm --outfile=dist/index.js --banner:js='#!/usr/bin/env node' --sourcemap",
     "test": "node test-server.js",
     "prepublishOnly": "npm run build",
     "publish": "npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/bfxr2-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/bfxr2-mcp/issues"
+  },
+  "homepage": "https://github.com/yourusername/bfxr2-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.4.0",
     "bfxr2": "git+https://github.com/increpare/bfxr2.git"
   },
-  "keywords": ["mcp", "music", "sound", "bfxr"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "music",
+    "sound",
+    "sound-effects",
+    "bfxr",
+    "audio",
+    "wav",
+    "sfx",
+    "game-audio"
+  ],
   "author": "Bfxr2 MCP",
   "license": "MIT",
   "files": [
-    "src/",
-    "README.md"
-  ]
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "devDependencies": {
+    "esbuild": "^0.27.2"
+  }
 }

@@ -1,6 +1,21 @@
 # Bfxr2 MCP Server
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![MCP](https://img.shields.io/badge/MCP-Compatible-blue.svg)](https://modelcontextprotocol.io/)
+
 A Model Context Protocol (MCP) server that provides music and sound effect generation tools using the existing Bfxr2 codebase.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [MCP Server Configuration](#mcp-server-configuration)
+- [Usage](#usage)
+- [Architecture](#architecture)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
+- [License](#license)
 
 ## Features
 
@@ -139,11 +154,19 @@ Key parameters you can control:
 - `frequency_start`: Base frequency (0-1)
 - `frequency_slide`: Frequency sweep (-0.5 to 0.5)
 - `attackTime`: Volume envelope attack (0-1)
-- `sustainTime`: Volume envelope sustain (0-1) 
+- `sustainTime`: Volume envelope sustain (0-1)
 - `decayTime`: Volume envelope decay (0.03-1)
 - `vibratoDepth`: Vibrato strength (0-1)
 - `vibratoSpeed`: Vibrato speed (0-1)
 
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes in each version.
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
