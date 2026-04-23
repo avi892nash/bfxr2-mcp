@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -170,6 +168,98 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           type: "object",
           properties: {}
         }
+      },
+      {
+        name: "generate_named_sound",
+        description: "Generate a sound from precomputed named presets. These are carefully crafted sound configurations for specific effects like 'cry', 'splash', 'bark', 'glass', etc. Each preset has been fine-tuned for a particular sound character.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            preset: {
+              type: "string",
+              enum: ["cry", "pluck", "splash", "droplet", "rip", "woof", "pushrock", "glass", "bark", "powerdown", "smallbark", "bounce"],
+              description: "Name of the preset to generate"
+            },
+            customParams: {
+              type: "object",
+              description: "Optional custom parameters to override preset values",
+              properties: {
+                waveType: { type: "integer", minimum: 0, maximum: 11 },
+                frequency_start: { type: "number", minimum: 0, maximum: 1 },
+                attackTime: { type: "number", minimum: 0, maximum: 1 },
+                sustainTime: { type: "number", minimum: 0, maximum: 1 },
+                decayTime: { type: "number", minimum: 0.03, maximum: 1 }
+              }
+            },
+            filepath: {
+              type: "string",
+              description: "Full path where to save the WAV file (including .wav extension)"
+            }
+          },
+          required: ["preset", "filepath"]
+        }
+      },
+      {
+        name: "list_named_presets",
+        description: "List all available named sound presets with descriptions. These are precomputed configurations for specific sound effects like animal sounds, environmental effects, and more.",
+        inputSchema: {
+          type: "object",
+          properties: {}
+        }
+      },
+      {
+        name: "mutate_sound",
+        description: "Mutate the current sound by slightly randomizing its parameters. Creates variations of the last generated sound while maintaining its general character. Great for creating sound families or finding interesting variations.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            filepath: {
+              type: "string",
+              description: "Full path where to save the WAV file (including .wav extension)"
+            }
+          },
+          required: ["filepath"]
+        }
+      },
+      {
+        name: "list_wave_types",
+        description: "List all available wave types (oscillator shapes) that can be used for sound generation. Each wave type produces a different tonal character - from clean sine waves to harsh noise.",
+        inputSchema: {
+          type: "object",
+          properties: {}
+        }
+      },
+      {
+        name: "create_sound_with_wave",
+        description: "Create a sound using a specific wave type by name. Allows specifying the wave type using its name (e.g., 'Square', 'Saw', 'Whistle') instead of a numeric ID.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            waveType: {
+              type: "string",
+              enum: ["Square", "Saw", "Sin", "White", "Triangle", "Rasp", "Tan", "Whistle", "Breaker", "Bitnoise", "FMSyn", "Voice"],
+              description: "Name of the wave type to use"
+            },
+            parameters: {
+              type: "object",
+              description: "Additional sound parameters",
+              properties: {
+                frequency_start: { type: "number", minimum: 0, maximum: 1 },
+                frequency_slide: { type: "number", minimum: -0.5, maximum: 0.5 },
+                attackTime: { type: "number", minimum: 0, maximum: 1 },
+                sustainTime: { type: "number", minimum: 0, maximum: 1 },
+                decayTime: { type: "number", minimum: 0.03, maximum: 1 },
+                vibratoDepth: { type: "number", minimum: 0, maximum: 1 },
+                vibratoSpeed: { type: "number", minimum: 0, maximum: 1 }
+              }
+            },
+            filepath: {
+              type: "string",
+              description: "Full path where to save the WAV file (including .wav extension)"
+            }
+          },
+          required: ["waveType", "filepath"]
+        }
       }
     ],
   };
@@ -287,12 +377,95 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text",
-              text: `Available presets:\n${presets.map(p => `• ${p.name}: ${p.description}`).join('\n')}`
+              text: `Available generator presets:\n${presets.map(p => `• ${p.name}: ${p.description}`).join('\n')}\n\nUse 'list_named_presets' to see precomputed named sound configurations.`
             }
           ]
         };
       }
-      
+
+      case "generate_named_sound": {
+        const { preset, customParams = {}, filepath } = args;
+        musicGenerator.generateNamedPreset(preset, customParams);
+
+        const result = saveWavFile(filepath, `named preset '${preset}'`);
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: result.message
+            }
+          ]
+        };
+      }
+
+      case "list_named_presets": {
+        const namedPresets = musicGenerator.getNamedPresets();
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Available named presets:\n${namedPresets.map(p => `• ${p.name}: ${p.description} (${p.waveType} wave)`).join('\n')}`
+            }
+          ]
+        };
+      }
+
+      case "mutate_sound": {
+        const { filepath } = args;
+
+        if (!musicGenerator.bfxr.sound) {
+          return {
+            content: [
+              {
+                type: "text",
+                text: "No sound generated yet. Please generate a sound first using generate_sound_effect, create_custom_sound, or generate_named_sound."
+              }
+            ]
+          };
+        }
+
+        musicGenerator.mutateSound();
+        const result = saveWavFile(filepath, 'mutated');
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: result.message
+            }
+          ]
+        };
+      }
+
+      case "list_wave_types": {
+        const waveTypes = musicGenerator.getWaveTypes();
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Available wave types:\n${waveTypes.map(w => `• ${w.id}: ${w.name} - ${w.description}`).join('\n')}`
+            }
+          ]
+        };
+      }
+
+      case "create_sound_with_wave": {
+        const { waveType, parameters = {}, filepath } = args;
+        musicGenerator.createSoundWithWaveType(waveType, parameters);
+
+        const result = saveWavFile(filepath, `${waveType} wave`);
+
+        return {
+          content: [
+            {
+              type: "text",
+              text: result.message
+            }
+          ]
+        };
+      }
+
       default:
         throw new Error(`Unknown tool: ${name}`);
     }

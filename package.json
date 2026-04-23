@@ -11,7 +11,7 @@
     "start": "node src/server.js",
     "dev": "node --inspect src/server.js",
     "build": "esbuild src/server.js --bundle --platform=node --target=node18 --format=esm --outfile=dist/index.js --banner:js='#!/usr/bin/env node' --sourcemap",
-    "test": "node test-server.js",
+    "test": "node --test test/generation.test.js",
     "prepublishOnly": "npm run build",
     "publish": "npm publish"
   },

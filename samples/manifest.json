@@ -1,0 +1,170 @@
+[
+  {
+    "file": "preset_pickup.wav",
+    "label": "preset:pickup",
+    "bytes": 11706,
+    "base64Snippet": "UklGRrItAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_laser.wav",
+    "label": "preset:laser",
+    "bytes": 13198,
+    "base64Snippet": "UklGRoYzAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_explosion.wav",
+    "label": "preset:explosion",
+    "bytes": 29050,
+    "base64Snippet": "UklGRnJxAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_powerup.wav",
+    "label": "preset:powerup",
+    "bytes": 4802,
+    "base64Snippet": "UklGRroSAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_hit.wav",
+    "label": "preset:hit",
+    "bytes": 6232,
+    "base64Snippet": "UklGRlAYAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_jump.wav",
+    "label": "preset:jump",
+    "bytes": 13354,
+    "base64Snippet": "UklGRiI0AABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_blip.wav",
+    "label": "preset:blip",
+    "bytes": 7758,
+    "base64Snippet": "UklGRkYeAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_pickup_custom.wav",
+    "label": "preset:pickup waveType=2 frequency_start=0.7",
+    "bytes": 7954,
+    "base64Snippet": "UklGRgofAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "preset_laser_custom.wav",
+    "label": "preset:laser frequency_slide=-0.3 decayTime=0.5",
+    "bytes": 9508,
+    "base64Snippet": "UklGRhwlAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "custom_square.wav",
+    "label": "custom: Square 0.5Hz envelope 0/0.1/0.3",
+    "bytes": 19778,
+    "base64Snippet": "UklGRjpNAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "custom_noise_vibrato.wav",
+    "label": "custom: White noise vibrato",
+    "bytes": 49638,
+    "base64Snippet": "UklGRt7BAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "random_seed42.wav",
+    "label": "random seed=42",
+    "bytes": 155416,
+    "base64Snippet": "UklGRhBfAgBXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "random_seed99.wav",
+    "label": "random seed=99",
+    "bytes": 54512,
+    "base64Snippet": "UklGRujUAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_cry.wav",
+    "label": "named:cry",
+    "bytes": 15606,
+    "base64Snippet": "UklGRu48AABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_pluck.wav",
+    "label": "named:pluck",
+    "bytes": 37770,
+    "base64Snippet": "UklGRoKTAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_splash.wav",
+    "label": "named:splash",
+    "bytes": 24302,
+    "base64Snippet": "UklGRuZeAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_droplet.wav",
+    "label": "named:droplet",
+    "bytes": 66110,
+    "base64Snippet": "UklGRjYCAQBXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_glass.wav",
+    "label": "named:glass",
+    "bytes": 17894,
+    "base64Snippet": "UklGRt5FAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_bounce.wav",
+    "label": "named:bounce",
+    "bytes": 66,
+    "base64Snippet": "UklGRjoAAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_bark.wav",
+    "label": "named:bark",
+    "bytes": 90534,
+    "base64Snippet": "UklGRp5hAQBXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "named_woof.wav",
+    "label": "named:woof",
+    "bytes": 103038,
+    "base64Snippet": "UklGRnaSAQBXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_square.wav",
+    "label": "wave:Square",
+    "bytes": 19778,
+    "base64Snippet": "UklGRjpNAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_saw.wav",
+    "label": "wave:Saw",
+    "bytes": 19914,
+    "base64Snippet": "UklGRsJNAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_sin.wav",
+    "label": "wave:Sin",
+    "bytes": 19894,
+    "base64Snippet": "UklGRq5NAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_triangle.wav",
+    "label": "wave:Triangle",
+    "bytes": 19862,
+    "base64Snippet": "UklGRo5NAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_whistle.wav",
+    "label": "wave:Whistle",
+    "bytes": 19894,
+    "base64Snippet": "UklGRq5NAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "wave_fmsyn.wav",
+    "label": "wave:FMSyn",
+    "bytes": 19902,
+    "base64Snippet": "UklGRrZNAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  },
+  {
+    "file": "mutated_hit.wav",
+    "label": "hit → mutated once",
+    "bytes": 18670,
+    "base64Snippet": "UklGRuZIAABXQVZFZm10IBAAAAABAAEARKwAAIhY"
+  }
+]

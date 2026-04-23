@@ -76,23 +76,42 @@ npm start
    - Types: pickup, laser, explosion, powerup, hit, jump, blip
    - Optional custom parameter overrides
 
-2. **create_custom_sound**
+2. **generate_named_sound**
+   - Generate sounds from precomputed named presets
+   - Presets: cry, pluck, splash, droplet, rip, woof, pushrock, glass, bark, powerdown, smallbark, bounce
+   - Each preset has carefully tuned parameters for specific sound characters
+
+3. **create_custom_sound**
    - Full control over all sound parameters
    - Specify waveType, frequency, envelope, effects, etc.
 
-3. **randomize_sound**
+4. **create_sound_with_wave**
+   - Create sounds using wave type by name
+   - Wave types: Square, Saw, Sin, White, Triangle, Rasp, Tan, Whistle, Breaker, Bitnoise, FMSyn, Voice
+
+5. **randomize_sound**
    - Generate completely random sounds
    - Optional seed for reproducible results
 
-4. **export_wav**
+6. **mutate_sound**
+   - Create variations of the last generated sound
+   - Slightly randomizes parameters while maintaining general character
+
+7. **export_wav**
    - Export last generated sound as WAV
    - Formats: base64 or data URI
 
-5. **get_parameters**
+8. **get_parameters**
    - View current sound parameters
 
-6. **list_presets**
-   - List available sound effect presets
+9. **list_presets**
+   - List available generator presets (pickup, laser, etc.)
+
+10. **list_named_presets**
+    - List available named presets with descriptions (cry, bark, splash, etc.)
+
+11. **list_wave_types**
+    - List all available wave types with descriptions
 
 ### Example Tool Calls
 
@@ -123,6 +142,39 @@ npm start
 }
 ```
 
+```json
+{
+  "name": "generate_named_sound",
+  "arguments": {
+    "preset": "bark",
+    "filepath": "/tmp/bark.wav"
+  }
+}
+```
+
+```json
+{
+  "name": "create_sound_with_wave",
+  "arguments": {
+    "waveType": "Whistle",
+    "parameters": {
+      "frequency_start": 0.6,
+      "sustainTime": 0.4
+    },
+    "filepath": "/tmp/whistle.wav"
+  }
+}
+```
+
+```json
+{
+  "name": "mutate_sound",
+  "arguments": {
+    "filepath": "/tmp/mutated.wav"
+  }
+}
+```
+
 ## Architecture
 
 The MCP server uses a lightweight wrapper approach:
@@ -133,18 +185,39 @@ The MCP server uses a lightweight wrapper approach:
 
 ## Wave Types
 
-- 0: Square
-- 1: Saw  
-- 2: Sin
-- 3: White Noise
-- 4: Triangle
-- 5: Rasp
-- 6: Tan
-- 7: Whistle
-- 8: Breaker
-- 9: Bitnoise
-- 10: FMSyn
-- 11: Voice
+| ID | Name | Description |
+|----|------|-------------|
+| 0 | Square | Classic square wave, good for retro game sounds |
+| 1 | Saw | Sawtooth wave, raspy and buzzy |
+| 2 | Sin | Pure sine wave, clean and simple |
+| 3 | White | White noise, good for explosions and static |
+| 4 | Triangle | Triangle wave, softer than square |
+| 5 | Rasp | Periodic 1-bit noise, digital buzz |
+| 6 | Tan | Tangent wave, potentially crazy/distorted |
+| 7 | Whistle | Sin with overtone, breathy/hollow |
+| 8 | Breaker | Quadratic wave, smooth and slick |
+| 9 | Bitnoise | Periodic 1-bit white noise, glitchy |
+| 10 | FMSyn | FM synthesis, dense and breathy |
+| 11 | Voice | Digital voice sample |
+
+## Named Presets
+
+Pre-configured sounds with carefully tuned parameters:
+
+| Name | Wave Type | Description |
+|------|-----------|-------------|
+| cry | Voice | A crying/whimpering voice sound |
+| pluck | Voice | A plucked string instrument sound |
+| splash | Sin | A water splash effect |
+| droplet | Whistle | A water droplet sound |
+| rip | Voice | A tearing/ripping sound |
+| woof | Square | A dog bark/woof sound |
+| pushrock | White | A heavy object pushing/scraping sound |
+| glass | Whistle | A glass breaking/tinkling sound |
+| bark | Rasp | A sharp bark sound |
+| powerdown | White | A power-down/shutdown sound |
+| smallbark | Rasp | A small/quiet bark sound |
+| bounce | FMSyn | A bouncy/springy sound |
 
 ## Sound Parameters
 
