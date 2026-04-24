@@ -13,7 +13,8 @@
     "build": "esbuild src/server.js --bundle --platform=node --target=node18 --format=esm --outfile=dist/index.js --banner:js='#!/usr/bin/env node' --sourcemap",
     "test": "node --test test/generation.test.js",
     "prepublishOnly": "npm run build",
-    "publish": "npm publish"
+    "clean": "rm -rf dist",
+    "release": "npm run clean && npm test && npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
