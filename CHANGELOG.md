@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.2.1] - 2026-04-25
+
+### Changed
+- chore: remove prepublishOnly script from package.json
+
 ## [v1.2.0] - 2026-04-24
 
 ### Changed
