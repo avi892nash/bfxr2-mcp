@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/bfxr2-mcp.git"
+    "url": "git+https://github.com/avi892nash/bfxr2-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/bfxr2-mcp/issues"
+    "url": "https://github.com/avi892nash/bfxr2-mcp/issues"
   },
-  "homepage": "https://github.com/yourusername/bfxr2-mcp#readme",
+  "homepage": "https://github.com/avi892nash/bfxr2-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.4.0",
     "bfxr2": "git+https://github.com/increpare/bfxr2.git"
